@@ -10,9 +10,27 @@ FROM = "pop3_reader"
 @click.option('--pop3_host', default='pop.gmail.com', required=True, type=str)
 @click.option('--username', required=True, type=str)
 @click.option('--password', prompt=True, required=True, type=str)
-@click.option('--mbox-file', default='inbox.mbox', required=True, type=str)
-@click.option('--commit', default=False, is_flag=True, type=bool)
-@click.option('--dry-run', default=False, is_flag=True, type=bool)
+@click.option(
+    '--mbox-file',
+    default='inbox.mbox',
+    required=True,
+    type=str,
+    help='Output file for Mbox (default is inbox.mbox)',
+)
+@click.option(
+    '--commit',
+    default=False,
+    is_flag=True,
+    type=bool,
+    help='Skip performing QUIT command to keep messages "touched"',
+)
+@click.option(
+    '--dry-run',
+    default=False,
+    is_flag=True,
+    type=bool,
+    help='Do not actually download messages',
+)
 def pop3(pop3_host, username, password, mbox_file, commit, dry_run):
     print(f"- connecting to {pop3_host} as {username}")
     server = poplib.POP3_SSL(pop3_host)
