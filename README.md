@@ -1,4 +1,4 @@
-# Read POP3 mailbox and save all message to mbox
+# Read POP3 mailbox and save all messages to mbox
 
 ## Prerequisites
 
