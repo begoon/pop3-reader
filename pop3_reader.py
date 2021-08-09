@@ -1,4 +1,5 @@
 import poplib
+import datetime
 
 import click
 import tqdm
@@ -38,8 +39,9 @@ def pop3(pop3_host, username, password, mbox_file, commit, dry_run):
     server.pass_(password)
     pop3info = server.stat()
 
+    mbox_file = f'{mbox_file}-{datetime.datetime.now():%Y.%m.%d-%H.%M.%S}'
     mail_count = pop3info[0]
-    print(f"- downloading {mail_count} message(s)")
+    print(f"- downloading {mail_count} message(s) to {mbox_file}")
 
     with open(mbox_file, 'w') as mbox_file:
         indexes = list(reversed(range(mail_count)))
