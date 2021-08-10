@@ -21,7 +21,7 @@
     --username TEXT   [required]
     --password TEXT   [required]
     --mbox-file TEXT  Output file for Mbox (default is inbox.mbox) [required]
-    --commit          Skip performing QUIT command to keep messages "touched"
+    --commit          Skip performing QUIT command to keep messages "untouched"
     --dry-run         Do not actually download messages
     --help            Show this message and exit.
 
